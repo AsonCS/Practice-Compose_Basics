@@ -2,63 +2,78 @@ package com.example.practice_composebasics.ui
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
-import androidx.compose.material.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.compose.ui.unit.dp
 import com.example.practice_composebasics.R.drawable
 import com.example.practice_composebasics.R.string
 import com.example.practice_composebasics.ui.theme.PracticeComposeBasicsTheme
 
 @Composable
 fun ComposeArticleApp() {
-    val viewModel = viewModel<MainViewModel>()
-
-    ComposeArticleScreen(
-        navigateToComposeArticle = viewModel::navigateToComposeArticle
-    )
+    ComposeArticleScreen()
 }
 
 @Composable
-private fun ComposeArticleScreen(
-    navigateToComposeArticle: () -> Unit
-) {
-    Column {
+private fun ComposeArticleScreen() {
+    Column(
+        Modifier
+            .padding(bottom = 16.dp)
+    ) {
         Image(
             painter = painterResource(
                 id = drawable.bg_compose_background
             ),
             contentDescription = stringResource(string.compose_article_screen_image_content_description)
         )
-        Text(
-            text = stringResource(string.compose_article_screen_title)
+        ComposeArticleBody(
+            modifier = Modifier
+                .padding(
+                    start = 16.dp,
+                    top = 16.dp,
+                    end = 16.dp,
+                )
         )
-        Text(
-            text = stringResource(string.compose_article_screen_subtitle)
+        MainButton(
+            modifier = Modifier
+                .align(Alignment.End)
         )
-        Text(
-            text = stringResource(string.compose_article_screen_text)
-        )
-        TextButton(
-            onClick = { navigateToComposeArticle() }
-        ) {
-            Text(text = "fgdsfhjgçldfjgldçf")
-        }
     }
+}
+
+@Composable
+private fun ComposeArticleBody(
+    modifier: Modifier
+) {
+    Text(
+        text = stringResource(string.compose_article_screen_title),
+        style = MaterialTheme.typography.h1,
+        modifier = modifier
+    )
+    Text(
+        text = stringResource(string.compose_article_screen_subtitle),
+        modifier = modifier
+    )
+    Text(
+        text = stringResource(string.compose_article_screen_text),
+        modifier = modifier
+    )
 }
 
 @Preview(
     showBackground = true,
-    widthDp = 320
+    widthDp = 360
 )
 @Composable
 fun DefaultPreview() {
     PracticeComposeBasicsTheme {
-        ComposeArticleScreen(
-            navigateToComposeArticle = {}
-        )
+        ComposeArticleScreen()
     }
 }
