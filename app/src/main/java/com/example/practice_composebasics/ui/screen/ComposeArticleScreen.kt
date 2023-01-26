@@ -1,4 +1,4 @@
-package com.example.practice_composebasics.ui
+package com.example.practice_composebasics.ui.screen
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -28,9 +27,7 @@ private fun ComposeArticleScreen() {
             .padding(bottom = 16.dp)
     ) {
         Image(
-            painter = painterResource(
-                id = drawable.bg_compose_background
-            ),
+            painter = painterResource(drawable.bg_compose_background),
             contentDescription = stringResource(string.compose_article_screen_image_content_description)
         )
         ComposeArticleBody(
@@ -40,10 +37,6 @@ private fun ComposeArticleScreen() {
                     top = 16.dp,
                     end = 16.dp,
                 )
-        )
-        MainButton(
-            modifier = Modifier
-                .align(Alignment.End)
         )
     }
 }
@@ -68,12 +61,15 @@ private fun ComposeArticleBody(
 }
 
 @Preview(
+    heightDp = 960,
     showBackground = true,
-    widthDp = 360
+    widthDp = 432
 )
 @Composable
-fun DefaultPreview() {
-    PracticeComposeBasicsTheme {
+private fun ComposeArticleScreenPreview() {
+    PracticeComposeBasicsTheme(
+        isDarkTheme = false
+    ) {
         ComposeArticleScreen()
     }
 }
