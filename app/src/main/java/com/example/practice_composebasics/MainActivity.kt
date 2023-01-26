@@ -15,6 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.practice_composebasics.ui.MainViewModel
 import com.example.practice_composebasics.ui.component.MainButton
+import com.example.practice_composebasics.ui.screen.BusinessCardApp
 import com.example.practice_composebasics.ui.screen.ComposeArticleApp
 import com.example.practice_composebasics.ui.screen.ComposeQuadrantApp
 import com.example.practice_composebasics.ui.screen.TaskManagerApp
@@ -31,7 +32,7 @@ class MainActivity : ComponentActivity() {
             val uiState by viewModel.uiState.collectAsState()
 
             PracticeComposeBasicsTheme(
-                uiState.isDarkTheme ?: false
+                useDarkTheme = uiState.useDarkTheme ?: false
             ) {
                 // A surface container using the 'background' color from the theme
                 Surface(
@@ -40,6 +41,8 @@ class MainActivity : ComponentActivity() {
                 ) {
                     Box {
                         when (uiState.currentScreen) {
+                            MainViewModel.CurrentScreen.BusinessCardApp ->
+                                BusinessCardApp()
                             MainViewModel.CurrentScreen.ComposeArticle ->
                                 ComposeArticleApp()
                             MainViewModel.CurrentScreen.ComposeQuadrant ->

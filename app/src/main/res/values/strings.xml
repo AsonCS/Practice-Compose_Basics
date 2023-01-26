@@ -22,4 +22,6 @@
     <string name="compose_quadrant_screen_forth_title">Column composable</string>
     <string name="compose_quadrant_screen_forth_subtitle">A layout composable that places its children in a vertical sequence.</string>
 
+    <string name="compose_business_card_screen_logo_content_description">Card logo</string>
+
 </resources>

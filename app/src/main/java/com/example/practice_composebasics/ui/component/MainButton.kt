@@ -53,7 +53,7 @@ fun MainButton(
 @Composable
 private fun MainButtonPreview() {
     PracticeComposeBasicsTheme(
-        isDarkTheme = false
+        useDarkTheme = false
     ) {
         Box {
             MainButton(

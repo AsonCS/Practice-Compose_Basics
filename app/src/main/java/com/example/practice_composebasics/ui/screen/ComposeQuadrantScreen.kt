@@ -4,16 +4,17 @@ import androidx.annotation.StringRes
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Text
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.practice_composebasics.R.string
+import com.example.practice_composebasics.ui.theme.PracticeComposeBasicsTheme
 
 @Composable
 fun ComposeQuadrantApp() {
@@ -83,13 +84,14 @@ private fun Quadrant(
             text = stringResource(title),
             color = Color.Black,
             fontWeight = FontWeight.Bold,
+            style = MaterialTheme.typography.titleMedium,
             modifier = Modifier
                 .padding(bottom = 16.dp)
         )
         Text(
             text = stringResource(subtitle),
             color = Color.Black,
-            textAlign = TextAlign.Justify
+            style = MaterialTheme.typography.bodyMedium
         )
     }
 }
@@ -101,5 +103,9 @@ private fun Quadrant(
 )
 @Composable
 private fun ComposeQuadrantScreenPreview() {
-    ComposeQuadrantScreen()
+    PracticeComposeBasicsTheme(
+        useDarkTheme = false
+    ) {
+        ComposeQuadrantScreen()
+    }
 }

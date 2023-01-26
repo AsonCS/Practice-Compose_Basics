@@ -8,6 +8,7 @@ import kotlinx.coroutines.flow.update
 class MainViewModel : ViewModel() {
 
     enum class CurrentScreen {
+        BusinessCardApp,
         ComposeArticle,
         ComposeQuadrant,
         TaskManager,
@@ -15,17 +16,17 @@ class MainViewModel : ViewModel() {
 
     data class UiState(
         val currentScreen: CurrentScreen = CurrentScreen.ComposeArticle,
-        val isDarkTheme: Boolean? = null
+        val useDarkTheme: Boolean? = null
     )
 
     private val _uiUiState = MutableStateFlow(UiState())
     val uiState: StateFlow<UiState> get() = _uiUiState
 
-    fun setupTheme(isDarkTheme: Boolean) {
-        if (_uiUiState.value.isDarkTheme == null) {
+    fun setupTheme(useDarkTheme: Boolean) {
+        if (_uiUiState.value.useDarkTheme == null) {
             _uiUiState.update {
                 it.copy(
-                    isDarkTheme = isDarkTheme
+                    useDarkTheme = useDarkTheme
                 )
             }
         }
@@ -33,10 +34,12 @@ class MainViewModel : ViewModel() {
 
     fun toggleScreen() {
         val state = when (_uiUiState.value.currentScreen) {
+            CurrentScreen.BusinessCardApp ->
+                CurrentScreen.ComposeArticle
             CurrentScreen.ComposeArticle ->
                 CurrentScreen.TaskManager
             CurrentScreen.ComposeQuadrant ->
-                CurrentScreen.ComposeArticle
+                CurrentScreen.BusinessCardApp
             CurrentScreen.TaskManager ->
                 CurrentScreen.ComposeQuadrant
         }
@@ -48,12 +51,12 @@ class MainViewModel : ViewModel() {
     }
 
     fun toggleTheme() {
-        val isDarkTheme = _uiUiState.value.isDarkTheme
+        val useDarkTheme = _uiUiState.value.useDarkTheme
             ?: return
 
         _uiUiState.update {
             it.copy(
-                isDarkTheme = isDarkTheme.not()
+                useDarkTheme = useDarkTheme.not()
             )
         }
     }

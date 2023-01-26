@@ -3,8 +3,8 @@ package com.example.practice_composebasics.ui.screen
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -47,15 +47,17 @@ private fun ComposeArticleBody(
 ) {
     Text(
         text = stringResource(string.compose_article_screen_title),
-        style = MaterialTheme.typography.h1,
+        style = MaterialTheme.typography.titleMedium,
         modifier = modifier
     )
     Text(
         text = stringResource(string.compose_article_screen_subtitle),
+        style = MaterialTheme.typography.bodyMedium,
         modifier = modifier
     )
     Text(
         text = stringResource(string.compose_article_screen_text),
+        style = MaterialTheme.typography.bodyMedium,
         modifier = modifier
     )
 }
@@ -68,7 +70,7 @@ private fun ComposeArticleBody(
 @Composable
 private fun ComposeArticleScreenPreview() {
     PracticeComposeBasicsTheme(
-        isDarkTheme = false
+        useDarkTheme = false
     ) {
         ComposeArticleScreen()
     }
