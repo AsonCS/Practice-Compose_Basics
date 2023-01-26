@@ -22,35 +22,31 @@ fun TaskManagerApp() {
 
 @Composable
 private fun TaskManagerScreen() {
-    Box(
+    Column(
         modifier = Modifier
             .fillMaxHeight()
-            .fillMaxWidth()
+            .fillMaxWidth(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center,
     ) {
-        Column(
+        Image(
+            painter = painterResource(drawable.ic_task_completed),
+            contentDescription = stringResource(string.task_manager_screen_image_content_description)
+        )
+        Text(
+            text = stringResource(string.task_manager_screen_all_done),
+            fontWeight = FontWeight.Bold,
             modifier = Modifier
-                .align(Alignment.Center)
-        ) {
-            Image(
-                painter = painterResource(drawable.ic_task_completed),
-                contentDescription = stringResource(string.task_manager_screen_image_content_description)
-            )
-            Text(
-                text = stringResource(string.task_manager_screen_all_done),
-                fontWeight = FontWeight.Bold,
-                modifier = Modifier
-                    .align(Alignment.CenterHorizontally)
-                    .padding(
-                        top = 24.dp,
-                        bottom = 8.dp
-                    )
-            )
-            Text(
-                text = stringResource(string.task_manager_screen_nice_work),
-                modifier = Modifier
-                    .align(Alignment.CenterHorizontally)
-            )
-        }
+                .padding(
+                    top = 24.dp,
+                    bottom = 8.dp
+                )
+        )
+        Text(
+            text = stringResource(string.task_manager_screen_nice_work),
+            modifier = Modifier
+                .align(Alignment.CenterHorizontally)
+        )
     }
 }
 

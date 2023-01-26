@@ -22,44 +22,43 @@ fun ComposeQuadrantApp() {
 
 @Composable
 private fun ComposeQuadrantScreen() {
-    val modifier = Modifier
-        .fillMaxHeight()
-        .fillMaxWidth()
-    Column {
+    Column(
+        modifier = Modifier.fillMaxWidth()
+    ) {
         Row(
-            modifier = modifier
+            modifier = Modifier
                 .weight(1f)
         ) {
             Quadrant(
                 title = string.compose_quadrant_screen_first_title,
                 subtitle = string.compose_quadrant_screen_first_subtitle,
-                modifier = modifier
+                modifier = Modifier
                     .background(Color.Green)
                     .weight(1f)
             )
             Quadrant(
                 title = string.compose_quadrant_screen_second_title,
                 subtitle = string.compose_quadrant_screen_second_subtitle,
-                modifier = modifier
+                modifier = Modifier
                     .background(Color.Yellow)
                     .weight(1f)
             )
         }
         Row(
-            modifier = modifier
+            modifier = Modifier
                 .weight(1f)
         ) {
             Quadrant(
                 title = string.compose_quadrant_screen_third_title,
                 subtitle = string.compose_quadrant_screen_third_subtitle,
-                modifier = modifier
+                modifier = Modifier
                     .background(Color.Cyan)
                     .weight(1f)
             )
             Quadrant(
                 title = string.compose_quadrant_screen_forth_title,
                 subtitle = string.compose_quadrant_screen_forth_subtitle,
-                modifier = modifier
+                modifier = Modifier
                     .background(Color.LightGray)
                     .weight(1f)
             )
@@ -75,16 +74,16 @@ private fun Quadrant(
 ) {
     Column(
         modifier = modifier
-            .padding(16.dp)
-            .wrapContentHeight(Alignment.CenterVertically)
+            .fillMaxSize()
+            .padding(16.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
     ) {
         Text(
             text = stringResource(title),
             color = Color.Black,
             fontWeight = FontWeight.Bold,
-            textAlign = TextAlign.Center,
             modifier = Modifier
-                .fillMaxWidth()
                 .padding(bottom = 16.dp)
         )
         Text(
