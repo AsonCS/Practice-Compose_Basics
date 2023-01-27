@@ -1,5 +1,6 @@
 package com.example.practice_composebasics
 
+import android.content.Context
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -17,17 +18,22 @@ import androidx.core.view.WindowCompat
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.practice_composebasics.ui.MainViewModel
 import com.example.practice_composebasics.ui.component.MainButton
-import com.example.practice_composebasics.ui.screen.BusinessCardApp
-import com.example.practice_composebasics.ui.screen.ComposeArticleApp
-import com.example.practice_composebasics.ui.screen.ComposeQuadrantApp
-import com.example.practice_composebasics.ui.screen.TaskManagerApp
+import com.example.practice_composebasics.ui.screen.*
 import com.example.practice_composebasics.ui.theme.PracticeComposeBasicsTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContent {
-            val viewModel = viewModel<MainViewModel>()
+            val viewModel = viewModel {
+                MainViewModel(
+                    sharedPreferences = getSharedPreferences(
+                        /* name = */ "ComposeBasics",
+                        /* mode = */ Context.MODE_PRIVATE
+                    )
+                )
+            }
             viewModel.setupTheme(
                 isSystemInDarkTheme()
             )
@@ -51,14 +57,16 @@ class MainActivity : ComponentActivity() {
                 ) {
                     Box {
                         when (uiState.currentScreen) {
-                            MainViewModel.CurrentScreen.BusinessCardApp ->
-                                BusinessCardApp()
-                            MainViewModel.CurrentScreen.ComposeArticle ->
+                            MainViewModel.CurrentScreen.Screen1ComposeArticle ->
                                 ComposeArticleApp()
-                            MainViewModel.CurrentScreen.ComposeQuadrant ->
-                                ComposeQuadrantApp()
-                            MainViewModel.CurrentScreen.TaskManager ->
+                            MainViewModel.CurrentScreen.Screen2TaskManager ->
                                 TaskManagerApp()
+                            MainViewModel.CurrentScreen.Screen3ComposeQuadrant ->
+                                ComposeQuadrantApp()
+                            MainViewModel.CurrentScreen.Screen4BusinessCard ->
+                                BusinessCardApp()
+                            MainViewModel.CurrentScreen.Screen5DiceRoller ->
+                                DiceRollerApp()
                         }
                         MainButton(
                             toggleScreen = viewModel::toggleScreen,

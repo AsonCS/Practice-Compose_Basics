@@ -1,63 +1,108 @@
 package com.example.practice_composebasics.ui
 
+import android.content.SharedPreferences
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
 
-class MainViewModel : ViewModel() {
+class MainViewModel(
+    private val sharedPreferences: SharedPreferences
+) : ViewModel() {
 
     enum class CurrentScreen {
-        BusinessCardApp,
-        ComposeArticle,
-        ComposeQuadrant,
-        TaskManager,
+        Screen1ComposeArticle,
+        Screen2TaskManager,
+        Screen3ComposeQuadrant,
+        Screen4BusinessCard,
+        Screen5DiceRoller,
     }
 
     data class UiState(
-        val currentScreen: CurrentScreen = CurrentScreen.ComposeArticle,
+        val currentScreen: CurrentScreen = CurrentScreen.Screen1ComposeArticle,
         val useDarkTheme: Boolean? = null
     )
 
-    private val _uiUiState = MutableStateFlow(UiState())
-    val uiState: StateFlow<UiState> get() = _uiUiState
+    private val _uiState = MutableStateFlow(UiState())
+    val uiState: StateFlow<UiState> get() = _uiState
 
-    fun setupTheme(useDarkTheme: Boolean) {
-        if (_uiUiState.value.useDarkTheme == null) {
-            _uiUiState.update {
-                it.copy(
+    private val keyCurrentScreen = "keyCurrentScreen"
+    private val keyUseDarkTheme = "keyUseDarkTheme"
+
+    init {
+        var currentScreen: CurrentScreen? = null
+        var useDarkTheme: Boolean? = null
+        sharedPreferences.all.forEach { (key, value) ->
+            when {
+                key == keyCurrentScreen && value is String ->
+                    currentScreen = CurrentScreen.valueOf(value)
+                key == keyUseDarkTheme && value is Boolean ->
+                    useDarkTheme = value
+            }
+        }
+        if (currentScreen != null || useDarkTheme != null) {
+            _uiState.update {
+                UiState(
+                    currentScreen = currentScreen ?: CurrentScreen.Screen1ComposeArticle,
                     useDarkTheme = useDarkTheme
                 )
             }
         }
     }
 
-    fun toggleScreen() {
-        val state = when (_uiUiState.value.currentScreen) {
-            CurrentScreen.BusinessCardApp ->
-                CurrentScreen.ComposeArticle
-            CurrentScreen.ComposeArticle ->
-                CurrentScreen.TaskManager
-            CurrentScreen.ComposeQuadrant ->
-                CurrentScreen.BusinessCardApp
-            CurrentScreen.TaskManager ->
-                CurrentScreen.ComposeQuadrant
-        }
-        _uiUiState.update {
-            it.copy(
-                currentScreen = state
-            )
+    fun setupTheme(useDarkTheme: Boolean) {
+        if (uiState.value.useDarkTheme == null) {
+            setTheme(useDarkTheme)
         }
     }
 
+    fun toggleScreen() {
+        setCurrentScreen(
+            when (uiState.value.currentScreen) {
+                CurrentScreen.Screen1ComposeArticle ->
+                    CurrentScreen.Screen2TaskManager
+                CurrentScreen.Screen2TaskManager ->
+                    CurrentScreen.Screen3ComposeQuadrant
+                CurrentScreen.Screen3ComposeQuadrant ->
+                    CurrentScreen.Screen4BusinessCard
+                CurrentScreen.Screen4BusinessCard ->
+                    CurrentScreen.Screen5DiceRoller
+                CurrentScreen.Screen5DiceRoller ->
+                    CurrentScreen.Screen1ComposeArticle
+            }
+        )
+    }
+
     fun toggleTheme() {
-        val useDarkTheme = _uiUiState.value.useDarkTheme
+        val useDarkTheme = uiState.value.useDarkTheme
             ?: return
 
-        _uiUiState.update {
+        setTheme(useDarkTheme.not())
+    }
+
+    private fun setCurrentScreen(currentScreen: CurrentScreen) {
+        _uiState.update {
             it.copy(
-                useDarkTheme = useDarkTheme.not()
-            )
+                currentScreen = currentScreen
+            ).also {
+                sharedPreferences
+                    .edit()
+                    .putString(keyCurrentScreen, currentScreen.name)
+                    .apply()
+            }
+        }
+    }
+
+    private fun setTheme(useDarkTheme: Boolean) {
+        _uiState.update {
+            it.copy(
+                useDarkTheme = useDarkTheme
+            ).also {
+                sharedPreferences
+                    .edit()
+                    .putBoolean(keyUseDarkTheme, useDarkTheme)
+                    .apply()
+            }
         }
     }
 
