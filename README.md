@@ -25,3 +25,7 @@
 <img src="https://raw.githubusercontent.com/AsonCS/Practice-Compose_Basics/master/image_compose_quadrant_app.png"><br/><br/><br/>
 - Business Card Screen (Light Mode / Dark Mode)
 <img src="https://raw.githubusercontent.com/AsonCS/Practice-Compose_Basics/master/image_business_card_app.png"><br/><br/><br/>
+- Dice Roller Screen (Light Mode / Dark Mode)
+<img src="https://raw.githubusercontent.com/AsonCS/Practice-Compose_Basics/master/image_dice_roller_app.png"><br/><br/><br/>
+- Lemonade Screen (Light Mode / Dark Mode)
+<img src="https://raw.githubusercontent.com/AsonCS/Practice-Compose_Basics/master/image_lemonade_app.png"><br/><br/><br/>
