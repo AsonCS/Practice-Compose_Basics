@@ -67,6 +67,8 @@ class MainActivity : ComponentActivity() {
                                 BusinessCardApp()
                             MainViewModel.CurrentScreen.Screen5DiceRoller ->
                                 DiceRollerApp()
+                            MainViewModel.CurrentScreen.Screen6Lemonade ->
+                                LemonadeApp()
                         }
                         MainButton(
                             toggleScreen = viewModel::toggleScreen,

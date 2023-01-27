@@ -17,6 +17,8 @@ import com.example.practice_composebasics.R.drawable
 import com.example.practice_composebasics.R.string
 import com.example.practice_composebasics.ui.theme.PracticeComposeBasicsTheme
 
+// region Composable
+
 @Composable
 fun ComposeArticleApp() {
     ComposeArticleScreen()
@@ -63,6 +65,10 @@ private fun ComposeArticleBody(
     )
 }
 
+// endregion
+
+// region Preview
+
 @Preview(
     heightDp = 960,
     showBackground = true,
@@ -98,3 +104,5 @@ private fun ComposeArticleScreenDarkPreview() {
         }
     }
 }
+
+// endregion

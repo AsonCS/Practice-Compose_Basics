@@ -16,6 +16,7 @@ class MainViewModel(
         Screen3ComposeQuadrant,
         Screen4BusinessCard,
         Screen5DiceRoller,
+        Screen6Lemonade,
     }
 
     data class UiState(
@@ -68,6 +69,8 @@ class MainViewModel(
                 CurrentScreen.Screen4BusinessCard ->
                     CurrentScreen.Screen5DiceRoller
                 CurrentScreen.Screen5DiceRoller ->
+                    CurrentScreen.Screen6Lemonade
+                CurrentScreen.Screen6Lemonade ->
                     CurrentScreen.Screen1ComposeArticle
             }
         )

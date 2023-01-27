@@ -23,7 +23,17 @@
     <string name="compose_quadrant_screen_forth_subtitle">A layout composable that places its children in a vertical sequence.</string>
 
     <string name="compose_business_card_screen_logo_content_description">Card logo</string>
-    <string name="button_roll_text">Roll</string>
-    <string name="historic">Historic</string>
+
+    <string name="dice_roller_screen_button_roll_text">Roll</string>
+    <string name="dice_roller_screen_historic">Historic</string>
+
+    <string name="lemonade_screen_tap_to_select">Tap the lemon tree to select a lemon</string>
+    <string name="lemonade_screen_tap_to_select_image_content_description">Lemon tree</string>
+    <string name="lemonade_screen_keep_tapping">Keep tapping the lemon to squeeze it</string>
+    <string name="lemonade_screen_keep_tapping_image_content_description">Lemon</string>
+    <string name="lemonade_screen_tap_to_drink">Tap the lemonade to drink it</string>
+    <string name="lemonade_screen_tap_to_drink_image_content_description">Glass of lemonade</string>
+    <string name="lemonade_screen_restart">Tap the empty glass to start again</string>
+    <string name="lemonade_screen_restart_image_content_description">Empty glass</string>
 
 </resources>

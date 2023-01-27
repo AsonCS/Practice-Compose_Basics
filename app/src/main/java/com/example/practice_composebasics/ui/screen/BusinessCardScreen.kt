@@ -3,7 +3,6 @@ package com.example.practice_composebasics.ui.screen
 import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Face
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.rounded.Email
 import androidx.compose.material.icons.rounded.Phone
@@ -23,6 +22,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.practice_composebasics.R.string
 import com.example.practice_composebasics.ui.theme.PracticeComposeBasicsTheme
+
+// region Composable
 
 @Composable
 fun BusinessCardApp() {
@@ -132,6 +133,10 @@ private fun InfoLine(
     }
 }
 
+// endregion
+
+// region Model
+
 data class Person(
     val logo: ImageVector = Icons.Filled.Person,
     val fullName: String = "Anderson Costa da Silva",
@@ -140,6 +145,10 @@ data class Person(
     val userName: String = "AsonCS",
     val email: String = "asoncs@gamil.com"
 )
+
+// endregion
+
+// region Preview
 
 @Preview(
     heightDp = 960,
@@ -176,3 +185,5 @@ private fun BusinessCardScreenDarkPreview() {
         }
     }
 }
+
+// endregion

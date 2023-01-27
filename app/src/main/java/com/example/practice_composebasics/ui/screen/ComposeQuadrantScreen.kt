@@ -19,6 +19,8 @@ import androidx.compose.ui.unit.dp
 import com.example.practice_composebasics.R.string
 import com.example.practice_composebasics.ui.theme.PracticeComposeBasicsTheme
 
+// region Composable
+
 @Composable
 fun ComposeQuadrantApp() {
     ComposeQuadrantScreen()
@@ -134,6 +136,10 @@ private fun Quadrant(
     }
 }
 
+// endregion
+
+// region Preview
+
 @Preview(
     heightDp = 960,
     showBackground = true,
@@ -165,3 +171,5 @@ private fun ComposeQuadrantScreenDarkPreview() {
         }
     }
 }
+
+// endregion
