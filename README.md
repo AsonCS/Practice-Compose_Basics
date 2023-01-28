@@ -29,3 +29,5 @@
 <img src="https://raw.githubusercontent.com/AsonCS/Practice-Compose_Basics/master/image_dice_roller_app.png"><br/><br/><br/>
 - Lemonade Screen (Light Mode / Dark Mode)
 <img src="https://raw.githubusercontent.com/AsonCS/Practice-Compose_Basics/master/image_lemonade_app.png"><br/><br/><br/>
+- Tip Time Screen (Light Mode / Dark Mode)
+<img src="https://raw.githubusercontent.com/AsonCS/Practice-Compose_Basics/master/image_tip_time_app.png"><br/><br/><br/>
