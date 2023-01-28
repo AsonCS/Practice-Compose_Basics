@@ -7,7 +7,6 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -18,7 +17,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.practice_composebasics.R.drawable
 import com.example.practice_composebasics.R.string
-import com.example.practice_composebasics.ui.theme.PracticeComposeBasicsTheme
+import com.example.practice_composebasics.ui.Preview
+import com.example.practice_composebasics.ui.PreviewDark
 
 // region Composable
 
@@ -138,16 +138,10 @@ private sealed class Screen(
 )
 @Composable
 private fun LemonadeScreenPreview() {
-    PracticeComposeBasicsTheme(
-        useDarkTheme = false
-    ) {
-        Surface(
-            color = MaterialTheme.colorScheme.background
-        ) {
-            LemonadeScreen(
-                screen = Screen.Screen3GlassOfLemonade
-            )
-        }
+    Preview {
+        LemonadeScreen(
+            screen = Screen.Screen3GlassOfLemonade
+        )
     }
 }
 
@@ -158,16 +152,10 @@ private fun LemonadeScreenPreview() {
 )
 @Composable
 private fun LemonadeScreenDarkPreview() {
-    PracticeComposeBasicsTheme(
-        useDarkTheme = true
-    ) {
-        Surface(
-            color = MaterialTheme.colorScheme.background
-        ) {
-            LemonadeScreen(
-                screen = Screen.Screen3GlassOfLemonade
-            )
-        }
+    PreviewDark {
+        LemonadeScreen(
+            screen = Screen.Screen3GlassOfLemonade
+        )
     }
 }
 

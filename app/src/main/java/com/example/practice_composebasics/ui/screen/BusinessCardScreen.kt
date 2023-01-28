@@ -9,7 +9,6 @@ import androidx.compose.material.icons.rounded.Phone
 import androidx.compose.material.icons.rounded.Share
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -21,7 +20,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.practice_composebasics.R.string
-import com.example.practice_composebasics.ui.theme.PracticeComposeBasicsTheme
+import com.example.practice_composebasics.ui.Preview
+import com.example.practice_composebasics.ui.PreviewDark
 
 // region Composable
 
@@ -157,14 +157,8 @@ data class Person(
 )
 @Composable
 private fun BusinessCardScreenPreview() {
-    PracticeComposeBasicsTheme(
-        useDarkTheme = false
-    ) {
-        Surface(
-            color = MaterialTheme.colorScheme.background
-        ) {
-            BusinessCardScreen()
-        }
+    Preview {
+        BusinessCardScreen()
     }
 }
 
@@ -175,14 +169,8 @@ private fun BusinessCardScreenPreview() {
 )
 @Composable
 private fun BusinessCardScreenDarkPreview() {
-    PracticeComposeBasicsTheme(
-        useDarkTheme = true
-    ) {
-        Surface(
-            color = MaterialTheme.colorScheme.background
-        ) {
-            BusinessCardScreen()
-        }
+    PreviewDark {
+        BusinessCardScreen()
     }
 }
 

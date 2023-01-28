@@ -4,7 +4,6 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -15,7 +14,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.practice_composebasics.R.drawable
 import com.example.practice_composebasics.R.string
-import com.example.practice_composebasics.ui.theme.PracticeComposeBasicsTheme
+import com.example.practice_composebasics.ui.Preview
+import com.example.practice_composebasics.ui.PreviewDark
 
 // region Composable
 
@@ -76,14 +76,8 @@ private fun ComposeArticleBody(
 )
 @Composable
 private fun ComposeArticleScreenPreview() {
-    PracticeComposeBasicsTheme(
-        useDarkTheme = false
-    ) {
-        Surface(
-            color = MaterialTheme.colorScheme.background
-        ) {
-            ComposeArticleScreen()
-        }
+    Preview {
+        ComposeArticleScreen()
     }
 }
 
@@ -94,14 +88,8 @@ private fun ComposeArticleScreenPreview() {
 )
 @Composable
 private fun ComposeArticleScreenDarkPreview() {
-    PracticeComposeBasicsTheme(
-        useDarkTheme = true
-    ) {
-        Surface(
-            color = MaterialTheme.colorScheme.background
-        ) {
-            ComposeArticleScreen()
-        }
+    PreviewDark {
+        ComposeArticleScreen()
     }
 }
 

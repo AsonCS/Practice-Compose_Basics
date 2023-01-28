@@ -22,18 +22,21 @@ import com.example.practice_composebasics.ui.screen.*
 import com.example.practice_composebasics.ui.theme.PracticeComposeBasicsTheme
 
 class MainActivity : ComponentActivity() {
+
+    private fun getInitialMainViewModel(): MainViewModel {
+        return MainViewModel(
+            sharedPreferences = getSharedPreferences(
+                /* name = */ "ComposeBasics",
+                /* mode = */ Context.MODE_PRIVATE
+            )
+        )
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContent {
-            val viewModel = viewModel {
-                MainViewModel(
-                    sharedPreferences = getSharedPreferences(
-                        /* name = */ "ComposeBasics",
-                        /* mode = */ Context.MODE_PRIVATE
-                    )
-                )
-            }
+            val viewModel = viewModel(initializer = { getInitialMainViewModel() })
             viewModel.setupTheme(
                 isSystemInDarkTheme()
             )
@@ -69,6 +72,8 @@ class MainActivity : ComponentActivity() {
                                 DiceRollerApp()
                             MainViewModel.CurrentScreen.Screen6Lemonade ->
                                 LemonadeApp()
+                            MainViewModel.CurrentScreen.Screen7TipTime ->
+                                TipTimeApp()
                         }
                         MainButton(
                             toggleScreen = viewModel::toggleScreen,

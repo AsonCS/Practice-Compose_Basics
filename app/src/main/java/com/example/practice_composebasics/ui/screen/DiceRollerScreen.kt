@@ -6,7 +6,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -18,13 +17,15 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.practice_composebasics.R.drawable
 import com.example.practice_composebasics.R.string
-import com.example.practice_composebasics.ui.theme.PracticeComposeBasicsTheme
+import com.example.practice_composebasics.ui.Preview
+import com.example.practice_composebasics.ui.PreviewDark
+import com.example.practice_composebasics.ui.logD
 
 // region Composable
 
 @Composable
 fun DiceRollerApp() {
-    log("DiceRollerApp")
+    logD("DiceRollerApp")
 
     DiceRollerScreen()
 }
@@ -34,7 +35,7 @@ private fun DiceRollerScreen(
     initialDiceFace: DiceFace? = null,
     initialLastValues: List<Int>? = null
 ) {
-    log("DiceRollerScreen")
+    logD("DiceRollerScreen")
 
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -64,7 +65,7 @@ private fun DiceRollerContent(
     initialDiceFace: DiceFace? = null,
     initialLastValues: List<Int>? = null
 ) {
-    log("DiceRollerContent")
+    logD("DiceRollerContent")
 
     var diceFace by remember {
         mutableStateOf(
@@ -106,7 +107,7 @@ private fun DiceRollerContent(
 private fun HistoricText(
     lastValues: List<Int>
 ) {
-    log("HistoricText")
+    logD("HistoricText")
 
     Text(
         text = lastValues.joinToString(
@@ -119,7 +120,7 @@ private fun HistoricText(
 private fun DiceImage(
     diceFace: DiceFace
 ) {
-    log("DiceImage")
+    logD("DiceImage")
 
     Image(
         painter = painterResource(diceFace.image),
@@ -131,7 +132,7 @@ private fun DiceImage(
 private fun RollButton(
     onClick: () -> Unit
 ) {
-    log("RollButton")
+    logD("RollButton")
 
     Button(
         onClick = onClick
@@ -227,17 +228,11 @@ private fun randomDiceFace(
 )
 @Composable
 private fun DiceRollerScreenPreview() {
-    PracticeComposeBasicsTheme(
-        useDarkTheme = false
-    ) {
-        Surface(
-            color = MaterialTheme.colorScheme.background
-        ) {
-            DiceRollerScreen(
-                initialDiceFace = DiceFace.Six,
-                initialLastValues = listOf(1, 3, 5, 6)
-            )
-        }
+    Preview {
+        DiceRollerScreen(
+            initialDiceFace = DiceFace.Six,
+            initialLastValues = listOf(1, 3, 5, 6)
+        )
     }
 }
 
@@ -248,22 +243,12 @@ private fun DiceRollerScreenPreview() {
 )
 @Composable
 private fun DiceRollerScreenDarkPreview() {
-    PracticeComposeBasicsTheme(
-        useDarkTheme = true
-    ) {
-        Surface(
-            color = MaterialTheme.colorScheme.background
-        ) {
-            DiceRollerScreen(
-                initialDiceFace = DiceFace.Six,
-                initialLastValues = listOf(1, 3, 5, 6)
-            )
-        }
+    PreviewDark {
+        DiceRollerScreen(
+            initialDiceFace = DiceFace.Six,
+            initialLastValues = listOf(1, 3, 5, 6)
+        )
     }
 }
 
 // endregion
-
-private fun log(message: String) {
-    android.util.Log.d("DiceRollerApp", message)
-}

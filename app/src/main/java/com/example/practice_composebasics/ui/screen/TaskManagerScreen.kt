@@ -2,8 +2,6 @@ package com.example.practice_composebasics.ui.screen
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -15,7 +13,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.practice_composebasics.R.drawable
 import com.example.practice_composebasics.R.string
-import com.example.practice_composebasics.ui.theme.PracticeComposeBasicsTheme
+import com.example.practice_composebasics.ui.Preview
+import com.example.practice_composebasics.ui.PreviewDark
 
 @Composable
 fun TaskManagerApp() {
@@ -59,9 +58,7 @@ private fun TaskManagerScreen() {
 )
 @Composable
 private fun TaskManagerScreenPreview() {
-    PracticeComposeBasicsTheme(
-        useDarkTheme = false
-    ) {
+    Preview {
         TaskManagerScreen()
     }
 }
@@ -73,13 +70,7 @@ private fun TaskManagerScreenPreview() {
 )
 @Composable
 private fun TaskManagerScreenDarkPreview() {
-    PracticeComposeBasicsTheme(
-        useDarkTheme = true
-    ) {
-        Surface(
-            color = MaterialTheme.colorScheme.background
-        ) {
-            TaskManagerScreen()
-        }
+    PreviewDark {
+        TaskManagerScreen()
     }
 }

@@ -1,14 +1,17 @@
 package com.example.practice_composebasics.ui
 
 import android.content.SharedPreferences
+import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
 
 class MainViewModel(
-    private val sharedPreferences: SharedPreferences
+    private val sharedPreferences: SharedPreferences? = null
 ) : ViewModel() {
+
+    // region Main
 
     enum class CurrentScreen {
         Screen1ComposeArticle,
@@ -17,6 +20,7 @@ class MainViewModel(
         Screen4BusinessCard,
         Screen5DiceRoller,
         Screen6Lemonade,
+        Screen7TipTime,
     }
 
     data class UiState(
@@ -33,12 +37,14 @@ class MainViewModel(
     init {
         var currentScreen: CurrentScreen? = null
         var useDarkTheme: Boolean? = null
-        sharedPreferences.all.forEach { (key, value) ->
-            when {
-                key == keyCurrentScreen && value is String ->
-                    currentScreen = CurrentScreen.valueOf(value)
-                key == keyUseDarkTheme && value is Boolean ->
-                    useDarkTheme = value
+        withSharedPreferences {
+            all.forEach { (key, value) ->
+                when {
+                    key == keyCurrentScreen && value is String ->
+                        currentScreen = CurrentScreen.valueOf(value)
+                    key == keyUseDarkTheme && value is Boolean ->
+                        useDarkTheme = value
+                }
             }
         }
         if (currentScreen != null || useDarkTheme != null) {
@@ -71,6 +77,8 @@ class MainViewModel(
                 CurrentScreen.Screen5DiceRoller ->
                     CurrentScreen.Screen6Lemonade
                 CurrentScreen.Screen6Lemonade ->
+                    CurrentScreen.Screen7TipTime
+                CurrentScreen.Screen7TipTime ->
                     CurrentScreen.Screen1ComposeArticle
             }
         )
@@ -87,9 +95,8 @@ class MainViewModel(
         _uiState.update {
             it.copy(
                 currentScreen = currentScreen
-            ).also {
-                sharedPreferences
-                    .edit()
+            ).withSharedPreferences {
+                edit()
                     .putString(keyCurrentScreen, currentScreen.name)
                     .apply()
             }
@@ -100,13 +107,29 @@ class MainViewModel(
         _uiState.update {
             it.copy(
                 useDarkTheme = useDarkTheme
-            ).also {
-                sharedPreferences
-                    .edit()
+            ).withSharedPreferences {
+                edit()
                     .putBoolean(keyUseDarkTheme, useDarkTheme)
                     .apply()
             }
         }
     }
+
+    private fun <T> T.withSharedPreferences(block: SharedPreferences.() -> Unit): T {
+        runCatching {
+            sharedPreferences?.run(block)
+        }.getOrNull()
+        return this
+    }
+
+    // endregion
+
+    // region TipTime
+
+    val costInputState = mutableStateOf("")
+    val roundUpState = mutableStateOf(false)
+    val tipPercentInputState = mutableStateOf("15")
+
+    // endregion
 
 }
