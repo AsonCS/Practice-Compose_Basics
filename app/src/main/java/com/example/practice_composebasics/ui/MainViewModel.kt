@@ -3,6 +3,7 @@ package com.example.practice_composebasics.ui
 import android.content.SharedPreferences
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
+import com.example.practice_composebasics.ui.screen.WebbTelescopeImage
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
@@ -21,6 +22,7 @@ class MainViewModel(
         Screen5DiceRoller,
         Screen6Lemonade,
         Screen7TipTime,
+        Screen8ArtSpace,
     }
 
     data class UiState(
@@ -79,6 +81,8 @@ class MainViewModel(
                 CurrentScreen.Screen6Lemonade ->
                     CurrentScreen.Screen7TipTime
                 CurrentScreen.Screen7TipTime ->
+                    CurrentScreen.Screen8ArtSpace
+                CurrentScreen.Screen8ArtSpace ->
                     CurrentScreen.Screen1ComposeArticle
             }
         )
@@ -129,6 +133,13 @@ class MainViewModel(
     val costInputState = mutableStateOf("")
     val roundUpState = mutableStateOf(false)
     val tipPercentInputState = mutableStateOf("15")
+
+    // endregion
+
+    // region ArtSpace
+
+    val webbTelescopeImageState =
+        mutableStateOf<WebbTelescopeImage>(WebbTelescopeImage.CosmicCliffs)
 
     // endregion
 

@@ -2,6 +2,7 @@ package com.example.practice_composebasics.ui
 
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
+import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.runtime.Composable
 import com.example.practice_composebasics.ui.theme.PracticeComposeBasicsTheme
 
@@ -38,3 +39,23 @@ fun PreviewDark(
         }
     }
 }
+
+enum class WindowWidthSize {
+    Compact,
+    Expanded,
+    Medium
+}
+
+fun WindowWidthSizeClass.toWindowWidthSize(): WindowWidthSize {
+    return when (this) {
+        WindowWidthSizeClass.Compact ->
+            WindowWidthSize.Compact
+        WindowWidthSizeClass.Expanded ->
+            WindowWidthSize.Expanded
+        WindowWidthSizeClass.Medium ->
+            WindowWidthSize.Medium
+        else ->
+            WindowWidthSize.Compact
+    }
+}
+

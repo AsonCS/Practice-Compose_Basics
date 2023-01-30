@@ -42,4 +42,7 @@
     <string name="tip_time_screen_how_was_the_service">Tip (%)</string>
     <string name="tip_time_screen_round_up_tip">Round up tip?</string>
 
+    <string name="art_space_screen_previous_button">Previous</string>
+    <string name="art_space_screen_next_button">Next</string>
+
 </resources>

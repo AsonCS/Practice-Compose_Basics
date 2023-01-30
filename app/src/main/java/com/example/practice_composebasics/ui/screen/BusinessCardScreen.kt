@@ -58,7 +58,6 @@ private fun BusinessCardScreen(
             Text(
                 text = person.fullName,
                 fontWeight = FontWeight.Bold,
-                textAlign = TextAlign.Center,
                 style = MaterialTheme.typography.displayMedium,
                 modifier = Modifier
                     .fillMaxWidth()

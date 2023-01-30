@@ -13,7 +13,7 @@ val Typography = Typography(
         fontFamily = FontFamily.Serif,
         fontSize = 36.sp,
         fontWeight = FontWeight.Normal,
-        textAlign = TextAlign.Start
+        textAlign = TextAlign.Center
     ),
     titleMedium = TextStyle(
         fontFamily = FontFamily.Serif,

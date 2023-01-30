@@ -9,6 +9,8 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
+import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
+import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -20,6 +22,7 @@ import com.example.practice_composebasics.ui.MainViewModel
 import com.example.practice_composebasics.ui.component.MainButton
 import com.example.practice_composebasics.ui.screen.*
 import com.example.practice_composebasics.ui.theme.PracticeComposeBasicsTheme
+import com.example.practice_composebasics.ui.toWindowWidthSize
 
 class MainActivity : ComponentActivity() {
 
@@ -32,6 +35,7 @@ class MainActivity : ComponentActivity() {
         )
     }
 
+    @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -43,6 +47,10 @@ class MainActivity : ComponentActivity() {
             val uiState by viewModel.uiState.collectAsState()
 
             val useDarkTheme = uiState.useDarkTheme ?: false
+            val windowWidth = calculateWindowSizeClass(this)
+                .widthSizeClass
+                .toWindowWidthSize()
+
             PracticeComposeBasicsTheme(
                 useDarkTheme = useDarkTheme
             ) {
@@ -74,6 +82,10 @@ class MainActivity : ComponentActivity() {
                                 LemonadeApp()
                             MainViewModel.CurrentScreen.Screen7TipTime ->
                                 TipTimeApp()
+                            MainViewModel.CurrentScreen.Screen8ArtSpace ->
+                                ArtSpaceApp(
+                                    windowWidth = windowWidth
+                                )
                         }
                         MainButton(
                             toggleScreen = viewModel::toggleScreen,
