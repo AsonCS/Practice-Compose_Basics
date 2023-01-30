@@ -2,7 +2,7 @@
 
 ### Pathway
 
-- <a href="https://developer.android.com/courses/pathways/android-basics-compose-unit-1-pathway-3" target="_blank">
+- <a href="https://developer.android.com/courses/android-basics-compose/course" target="_blank">
   Build a basic layout</a>
 
 # About
