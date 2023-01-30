@@ -1,6 +1,6 @@
 package com.example.practice_composebasics
 
-import com.example.practice_composebasics.ui.screen.tipValueCalculator
+import com.example.practice_composebasics.model.tipValueCalculator
 import org.junit.Assert.assertEquals
 import org.junit.Test
 import java.text.NumberFormat

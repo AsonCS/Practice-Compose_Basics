@@ -86,6 +86,8 @@ class MainActivity : ComponentActivity() {
                                 ArtSpaceApp(
                                     windowWidth = windowWidth
                                 )
+                            MainViewModel.CurrentScreen.Screen9Build1Grid ->
+                                Build1GridApp()
                         }
                         MainButton(
                             toggleScreen = viewModel::toggleScreen,

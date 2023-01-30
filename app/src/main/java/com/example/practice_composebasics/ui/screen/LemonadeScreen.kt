@@ -1,7 +1,5 @@
 package com.example.practice_composebasics.ui.screen
 
-import androidx.annotation.DrawableRes
-import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -15,8 +13,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.practice_composebasics.R.drawable
-import com.example.practice_composebasics.R.string
+import com.example.practice_composebasics.model.Screen
 import com.example.practice_composebasics.ui.Preview
 import com.example.practice_composebasics.ui.PreviewDark
 
@@ -89,42 +86,6 @@ private fun LemonadeScreen(
                 .padding(32.dp)
         )
     }
-}
-
-// endregion
-
-// region Model
-
-private sealed class Screen(
-    @StringRes val contentDescription: Int,
-    @DrawableRes val image: Int,
-    @StringRes val title: Int,
-) {
-    object Screen1LemonTree : Screen(
-        contentDescription = string.lemonade_screen_tap_to_select_image_content_description,
-        image = drawable.lemon_tree,
-        title = string.lemonade_screen_tap_to_select
-    )
-
-    class Screen2Lemon(
-        val timesNeeded: Int = (2..8).random()
-    ) : Screen(
-        contentDescription = string.lemonade_screen_keep_tapping_image_content_description,
-        image = drawable.lemon_squeeze,
-        title = string.lemonade_screen_keep_tapping
-    )
-
-    object Screen3GlassOfLemonade : Screen(
-        contentDescription = string.lemonade_screen_tap_to_drink_image_content_description,
-        image = drawable.lemon_drink,
-        title = string.lemonade_screen_tap_to_drink
-    )
-
-    object Screen4EmptyGlass : Screen(
-        contentDescription = string.lemonade_screen_restart_image_content_description,
-        image = drawable.lemon_restart,
-        title = string.lemonade_screen_restart
-    )
 }
 
 // endregion

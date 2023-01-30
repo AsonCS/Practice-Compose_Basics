@@ -45,4 +45,19 @@
     <string name="art_space_screen_previous_button">Previous</string>
     <string name="art_space_screen_next_button">Next</string>
 
+    <string name="build_1_grid_architecture">Architecture</string>
+    <string name="build_1_grid_crafts">Crafts</string>
+    <string name="build_1_grid_business">Business</string>
+    <string name="build_1_grid_culinary">Culinary</string>
+    <string name="build_1_grid_design">Design</string>
+    <string name="build_1_grid_fashion">Fashion</string>
+    <string name="build_1_grid_film">Film</string>
+    <string name="build_1_grid_gaming">Gaming</string>
+    <string name="build_1_grid_drawing">Drawing</string>
+    <string name="build_1_grid_lifestyle">Lifestyle</string>
+    <string name="build_1_grid_music">Music</string>
+    <string name="build_1_grid_painting">Painting</string>
+    <string name="build_1_grid_photography">Photography</string>
+    <string name="build_1_grid_tech">Tech</string>
+
 </resources>

@@ -3,7 +3,6 @@ package com.example.practice_composebasics.ui.screen
 import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.rounded.Email
 import androidx.compose.material.icons.rounded.Phone
 import androidx.compose.material.icons.rounded.Share
@@ -20,6 +19,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.practice_composebasics.R.string
+import com.example.practice_composebasics.model.Person
 import com.example.practice_composebasics.ui.Preview
 import com.example.practice_composebasics.ui.PreviewDark
 
@@ -131,19 +131,6 @@ private fun InfoLine(
         )
     }
 }
-
-// endregion
-
-// region Model
-
-data class Person(
-    val logo: ImageVector = Icons.Filled.Person,
-    val fullName: String = "Anderson Costa da Silva",
-    val role: String = "Android Developer, Fullstack",
-    val phoneNumber: String = "+55 11 91234-5678",
-    val userName: String = "AsonCS",
-    val email: String = "asoncs@gamil.com"
-)
 
 // endregion
 

@@ -16,6 +16,8 @@ import com.example.practice_composebasics.R.string
 import com.example.practice_composebasics.ui.Preview
 import com.example.practice_composebasics.ui.PreviewDark
 
+// region Composable
+
 @Composable
 fun TaskManagerApp() {
     TaskManagerScreen()
@@ -51,6 +53,10 @@ private fun TaskManagerScreen() {
     }
 }
 
+// endregion
+
+// region Preview
+
 @Preview(
     heightDp = 960,
     showBackground = true,
@@ -74,3 +80,5 @@ private fun TaskManagerScreenDarkPreview() {
         TaskManagerScreen()
     }
 }
+
+// endregion

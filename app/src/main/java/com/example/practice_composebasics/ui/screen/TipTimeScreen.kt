@@ -22,6 +22,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.practice_composebasics.R.string
+import com.example.practice_composebasics.model.onlyNumbers
+import com.example.practice_composebasics.model.tipValueCalculator
 import com.example.practice_composebasics.ui.MainViewModel
 import com.example.practice_composebasics.ui.Preview
 import com.example.practice_composebasics.ui.PreviewDark
@@ -186,38 +188,6 @@ private fun RoundTheTipRow(
             onCheckedChange = { roundUp = it }
         )
     }
-}
-
-// endregion
-
-// region Model
-
-private fun String.onlyNumbers(): String {
-    return replace(
-        regex = "[^0-9^\\.]".toRegex(),
-        replacement = ""
-    )
-}
-
-@VisibleForTesting
-internal fun tipValueCalculator(
-    costAmount: String,
-    roundUp: Boolean,
-    tipPercent: String
-): String {
-    val costValue = costAmount.toDoubleOrNull()
-        ?: 0.0
-    val tipValue = tipPercent.toDoubleOrNull()
-        ?: 0.0
-
-    var tip = tipValue / 100 * costValue
-    if (roundUp) {
-        tip = kotlin.math.ceil(tip)
-    }
-
-    return NumberFormat
-        .getCurrencyInstance()
-        .format(tip)
 }
 
 // endregion
