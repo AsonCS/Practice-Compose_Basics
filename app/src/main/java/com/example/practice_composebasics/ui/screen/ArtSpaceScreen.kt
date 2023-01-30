@@ -1,6 +1,7 @@
 package com.example.practice_composebasics.ui.screen
 
 import android.annotation.SuppressLint
+import androidx.annotation.DrawableRes
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.ClickableText
@@ -111,12 +112,12 @@ private fun ArtImage(
                 .fillMaxWidth()
                 .fillMaxHeight(0.6f)
     ) {
-        val fallback = painterResource(drawable.image_cosmic_cliffs)
+        val fallback = painterResource(image.fallbackImage)
         AsyncImage(
             contentDescription = image.title,
             error = fallback,
             fallback = fallback,
-            model = null, //webbTelescopeImage.image,
+            model = image.image.takeIf { it.isNotEmpty() },
             contentScale = ContentScale.Crop,
             placeholder = fallback,
             modifier = Modifier
@@ -235,55 +236,65 @@ private fun SourceLink(
 // region Model
 
 private open class WebbTelescopeImage(
+    @DrawableRes val fallbackImage: Int = drawable.ic_launcher_foreground,
     val image: String,
     val releaseDate: String,
     val source: String,
     val title: String
 )
 
+private object CosmicCliffsDefault : WebbTelescopeImage(
+    fallbackImage = drawable.image_cosmic_cliffs,
+    image = "",
+    releaseDate = "July 12, 2022 11:22AM (EDT)",
+    source = "https://webbtelescope.org/contents/media/images/2022/031/01G77PKB8NKR7S8Z6HBXMYATGJ",
+    title = "Default \"Cosmic Cliffs\"",
+)
+
 private object CosmicCliffs : WebbTelescopeImage(
-    image = "https://stsci-opo.org/STScI-01GA6KNV1S3TP2JBPCDT8G826T.png",
+    image = "https://github.com/AsonCS/Practice-Compose_Basics/raw/master/images/image_cosmic_cliffs.png",
     releaseDate = "July 12, 2022 11:22AM (EDT)",
     source = "https://webbtelescope.org/contents/media/images/2022/031/01G77PKB8NKR7S8Z6HBXMYATGJ",
     title = "\"Cosmic Cliffs\" in the Carina Nebula (NIRCam Image)",
 )
 
 private object CosmicCliffsComposite : WebbTelescopeImage(
-    image = "https://stsci-opo.org/STScI-01G8GYE2PQWY96TDX66CHQRMPQ.png",
+    image = "https://github.com/AsonCS/Practice-Compose_Basics/raw/master/images/image_cosmic_cliffs_composite.png",
     releaseDate = "July 12, 2022 11:22AM (EDT)",
     source = "https://webbtelescope.org/contents/media/images/2022/031/01G780WF1VRADDSD5MDNDRKAGY",
     title = "\"Cosmic Cliffs\" in the Carina Nebula (NIRCam and MIRI Composite Image)",
 )
 
 private object FirstDeepField : WebbTelescopeImage(
-    image = "https://stsci-opo.org/STScI-01G8H1NK4W8CJYHF2DDFD1W0DQ.png",
+    image = "https://github.com/AsonCS/Practice-Compose_Basics/raw/master/images/image_first_deep_field.png",
     releaseDate = "July 12, 2022 10:39AM (EDT)",
     source = "https://webbtelescope.org/contents/media/images/2022/035/01G7DCWB7137MYJ05CSH1Q5Z1Z",
     title = "Webb's First Deep Field (NIRCam Image)",
 )
 
 private object StephanQuintet : WebbTelescopeImage(
-    image = "https://stsci-opo.org/STScI-01G8H4DRM2C010PX6T3DPEEDAW.png",
+    image = "https://github.com/AsonCS/Practice-Compose_Basics/raw/master/images/image_stephan_quintet.png",
     releaseDate = "July 12, 2022 11:13AM (EDT)",
     source = "https://webbtelescope.org/contents/media/images/2022/034/01G7DA5ADA2WDSK1JJPQ0PTG4A",
     title = "Stephan's Quintet (NIRCam and MIRI Composite Image)",
 )
 
 private object ExoplanetLHS475 : WebbTelescopeImage(
-    image = "https://stsci-opo.org/STScI-01GNVTY9PE3VHJDW6GR9RHTHXX.png",
+    image = "https://github.com/AsonCS/Practice-Compose_Basics/raw/master/images/image_exoplanet_lhs_475.png",
     releaseDate = "January 11, 2023 1:15PM (EST)",
     source = "https://webbtelescope.org/contents/media/images/2023/102/01GNVTTACCM2GA5P3B6S5EAMWD",
     title = "Exoplanet LHS 475 b and Its Star (Illustration)",
 )
 
 private object SouthernRingNebula : WebbTelescopeImage(
-    image = "https://stsci-opo.org/STScI-01GQ5CHESABWMHRF5NA60A6MPF.png",
+    image = "https://github.com/AsonCS/Practice-Compose_Basics/raw/master/images/image_southern_ring_nebula.png",
     releaseDate = "January 23, 2023 11:00AM (EST)",
     source = "https://webbtelescope.org/contents/media/images/2023/106/01GQ2TJ92FQK45MY7JEYKWS834",
     title = "Chamaeleon I Molecular Cloud (NIRCam Image)",
 )
 
 private val webbTelescopeImageList = listOf(
+    CosmicCliffsDefault,
     CosmicCliffs,
     CosmicCliffsComposite,
     FirstDeepField,
