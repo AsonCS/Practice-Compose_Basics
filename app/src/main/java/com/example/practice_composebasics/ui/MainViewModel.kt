@@ -3,7 +3,6 @@ package com.example.practice_composebasics.ui
 import android.content.SharedPreferences
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
-import com.example.practice_composebasics.ui.screen.WebbTelescopeImage
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
@@ -138,8 +137,7 @@ class MainViewModel(
 
     // region ArtSpace
 
-    val webbTelescopeImageState =
-        mutableStateOf<WebbTelescopeImage>(WebbTelescopeImage.CosmicCliffs)
+    val webbTelescopeImageState = mutableStateOf(0)
 
     // endregion
 
