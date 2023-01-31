@@ -90,6 +90,10 @@ class MainActivity : ComponentActivity() {
                                 Build1GridApp()
                             MainViewModel.CurrentScreen.Screen10Heroes ->
                                 HeroesApp()
+                            MainViewModel.CurrentScreen.Screen11CreateA30Days ->
+                                Screen11CreateA30DaysApp(
+                                    windowWidth = windowWidth
+                                )
                         }
                         MainButton(
                             toggleScreen = viewModel::toggleScreen,

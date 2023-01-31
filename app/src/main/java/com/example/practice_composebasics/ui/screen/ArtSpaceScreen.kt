@@ -22,6 +22,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.AsyncImage
 import com.example.practice_composebasics.R.string
+import com.example.practice_composebasics.model.WebbTelescopeImage
 import com.example.practice_composebasics.model.imageListSize
 import com.example.practice_composebasics.model.webbTelescopeImageList
 import com.example.practice_composebasics.ui.*
@@ -49,34 +50,35 @@ private fun ArtSpaceScreen(
 ) {
     logD("ArtSpaceScreen")
 
-    Column(
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.spacedBy(
-            alignment = Alignment.CenterVertically,
-            space = 16.dp
-        ),
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(32.dp)
-    ) {
-        if (windowWidth == WindowWidthSize.Expanded) {
-            Row(
-                horizontalArrangement = Arrangement.spacedBy(
-                    alignment = Alignment.CenterHorizontally,
-                    space = 32.dp
-                ),
+    if (windowWidth == WindowWidthSize.Expanded) {
+        Row(
+            horizontalArrangement = Arrangement.spacedBy(
+                alignment = Alignment.CenterHorizontally,
+                space = 16.dp
+            ),
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(32.dp)
+        ) {
+            ArtSpaceContent(
+                webbTelescopeImageState = webbTelescopeImageState,
+                windowWidth = windowWidth,
                 modifier = Modifier
-                    .fillMaxSize()
-            ) {
-                ArtImage(
-                    webbTelescopeImageState = webbTelescopeImageState,
-                    windowWidth = windowWidth,
-                    modifier = Modifier
-                        .weight(1f)
-                )
-            }
-        } else {
-            ArtImage(
+                    .weight(1f)
+            )
+        }
+    } else {
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.spacedBy(
+                alignment = Alignment.CenterVertically,
+                space = 16.dp
+            ),
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(32.dp)
+        ) {
+            ArtSpaceContent(
                 webbTelescopeImageState = webbTelescopeImageState,
                 windowWidth = windowWidth,
                 modifier = Modifier
@@ -86,77 +88,22 @@ private fun ArtSpaceScreen(
 }
 
 @Composable
-private fun ArtImage(
+private fun ArtSpaceContent(
     webbTelescopeImageState: MutableState<Int>,
     windowWidth: WindowWidthSize,
-    modifier: Modifier
+    modifier: Modifier = Modifier
 ) {
-    logD("ArtImage")
+    logD("ArtSpaceContent")
 
     var webbTelescopeImage by remember {
         webbTelescopeImageState
     }
-    val image = webbTelescopeImageList[webbTelescopeImage]
 
-    Surface(
-        border = BorderStroke(
-            color = MaterialTheme.colorScheme.primary,
-            width = 4.dp
-        ),
-        shadowElevation = 8.dp,
-        modifier = if (windowWidth == WindowWidthSize.Expanded)
-            modifier
-                .fillMaxHeight()
-        else
-            modifier
-                .fillMaxWidth()
-                .fillMaxHeight(0.6f)
+    ArtImage(
+        image = webbTelescopeImageList[webbTelescopeImage],
+        windowWidth = windowWidth,
+        modifier = modifier
     ) {
-        val fallback = painterResource(image.fallbackImage)
-        AsyncImage(
-            contentDescription = image.title,
-            error = fallback,
-            fallback = fallback,
-            model = image.image.takeIf { it.isNotEmpty() },
-            contentScale = ContentScale.Crop,
-            placeholder = fallback,
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(32.dp)
-        )
-    }
-    Column(
-        modifier = if (windowWidth == WindowWidthSize.Expanded)
-            modifier
-                .fillMaxWidth(0.4f)
-        else
-            modifier
-                .fillMaxWidth()
-    ) {
-        Surface(
-            shadowElevation = 8.dp
-        ) {
-            Column(
-                verticalArrangement = Arrangement.spacedBy(
-                    alignment = Alignment.CenterVertically,
-                    space = 8.dp
-                ),
-                modifier = Modifier
-                    .padding(16.dp)
-            ) {
-                Text(
-                    fontWeight = FontWeight.Bold,
-                    style = MaterialTheme.typography.displayMedium,
-                    text = image.title
-                )
-                Text(
-                    text = image.releaseDate
-                )
-                SourceLink(
-                    source = image.source
-                )
-            }
-        }
         Row(
             horizontalArrangement = Arrangement.spacedBy(
                 alignment = Alignment.CenterHorizontally,
@@ -189,11 +136,82 @@ private fun ArtImage(
             }
         }
     }
-
 }
 
 @Composable
-private fun SourceLink(
+internal fun ArtImage(
+    image: WebbTelescopeImage,
+    windowWidth: WindowWidthSize,
+    modifier: Modifier = Modifier,
+    buttons: @Composable () -> Unit = {}
+) {
+    logD("ArtImage")
+
+    Surface(
+        border = BorderStroke(
+            color = MaterialTheme.colorScheme.primary,
+            width = 4.dp
+        ),
+        shadowElevation = 8.dp,
+        modifier = if (windowWidth == WindowWidthSize.Expanded)
+            modifier
+                .fillMaxHeight()
+        else
+            modifier
+                .fillMaxWidth()
+                .fillMaxHeight(0.6f)
+    ) {
+        val fallback = painterResource(image.fallbackImage)
+        AsyncImage(
+            contentDescription = image.title,
+            error = fallback,
+            fallback = fallback,
+            model = image.image.takeIf { it.isNotEmpty() },
+            contentScale = ContentScale.Crop,
+            placeholder = fallback,
+            modifier = Modifier
+                .padding(32.dp)
+        )
+    }
+    Column(
+        modifier = if (windowWidth == WindowWidthSize.Expanded)
+            modifier
+                .fillMaxWidth(0.4f)
+        else
+            modifier
+                .fillMaxWidth()
+    ) {
+        Surface(
+            shadowElevation = 8.dp
+        ) {
+            Column(
+                verticalArrangement = Arrangement.spacedBy(
+                    alignment = Alignment.CenterVertically,
+                    space = 8.dp
+                ),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp)
+            ) {
+                Text(
+                    fontWeight = FontWeight.Bold,
+                    style = MaterialTheme.typography.displayMedium,
+                    text = image.title
+                )
+                Text(
+                    text = image.releaseDate
+                )
+                SourceLink(
+                    source = image.source
+                )
+            }
+        }
+        buttons()
+    }
+}
+
+@Composable
+internal fun SourceLink(
     source: String
 ) {
     logD("SourceLink")
@@ -242,7 +260,7 @@ private fun SourceLink(
     widthDp = 432
 )
 @Composable
-private fun TipTimeScreenPreview() {
+private fun ArtSpaceScreenPreview() {
     Preview {
         ArtSpaceScreen(
             webbTelescopeImageState = mutableStateOf(0),
@@ -258,7 +276,7 @@ private fun TipTimeScreenPreview() {
     widthDp = 432
 )
 @Composable
-private fun TipTimeScreenDarkPreview() {
+private fun ArtSpaceScreenDarkPreview() {
     PreviewDark {
         ArtSpaceScreen(
             webbTelescopeImageState = mutableStateOf(0),
@@ -274,7 +292,7 @@ private fun TipTimeScreenDarkPreview() {
     widthDp = 962
 )
 @Composable
-private fun TipTimeScreenTabletPreview() {
+private fun ArtSpaceScreenTabletPreview() {
     Preview {
         ArtSpaceScreen(
             webbTelescopeImageState = mutableStateOf(0),
