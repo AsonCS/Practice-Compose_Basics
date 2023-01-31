@@ -36,3 +36,7 @@
   <img src="https://raw.githubusercontent.com/AsonCS/Practice-Compose_Basics/master/images/image_art_space_app.png"><br/><br/><br/>
 - Build a Grid Screen (Light Mode / Dark Mode)<br/>
   <img src="https://raw.githubusercontent.com/AsonCS/Practice-Compose_Basics/master/images/image_build_1_grid_app.png"><br/><br/><br/>
+- Heroes Screen (Light Mode / Dark Mode)<br/>
+  <img src="https://raw.githubusercontent.com/AsonCS/Practice-Compose_Basics/master/images/image_heroes_app.png"><br/><br/><br/>
+- Create a 30 days Screen (Light Mode / Dark Mode)<br/>
+  <img src="https://raw.githubusercontent.com/AsonCS/Practice-Compose_Basics/master/images/image_create_a_30_days_app.png"><br/><br/><br/>
