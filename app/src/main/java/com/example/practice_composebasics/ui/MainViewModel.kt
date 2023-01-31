@@ -23,6 +23,7 @@ class MainViewModel(
         Screen7TipTime,
         Screen8ArtSpace,
         Screen9Build1Grid,
+        Screen10Heroes,
     }
 
     data class UiState(
@@ -85,6 +86,8 @@ class MainViewModel(
                 CurrentScreen.Screen8ArtSpace ->
                     CurrentScreen.Screen9Build1Grid
                 CurrentScreen.Screen9Build1Grid ->
+                    CurrentScreen.Screen10Heroes
+                CurrentScreen.Screen10Heroes ->
                     CurrentScreen.Screen1ComposeArticle
             }
         )

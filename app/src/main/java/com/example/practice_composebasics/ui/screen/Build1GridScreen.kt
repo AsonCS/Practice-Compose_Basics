@@ -130,7 +130,7 @@ private fun TopicsGrid(
     widthDp = 432
 )
 @Composable
-private fun TipTimeScreenPreview() {
+private fun Build1GridScreenPreview() {
     Preview {
         Build1GridScreen()
     }
@@ -143,7 +143,7 @@ private fun TipTimeScreenPreview() {
     widthDp = 432
 )
 @Composable
-private fun TipTimeScreenDarkPreview() {
+private fun Build1GridScreenDarkPreview() {
     PreviewDark {
         Build1GridScreen()
     }
@@ -156,7 +156,7 @@ private fun TipTimeScreenDarkPreview() {
     widthDp = 962
 )
 @Composable
-private fun TipTimeScreenTabletPreview() {
+private fun Build1GridScreenTabletPreview() {
     Preview {
         Build1GridScreen()
     }

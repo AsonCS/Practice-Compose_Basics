@@ -60,4 +60,18 @@
     <string name="build_1_grid_photography">Photography</string>
     <string name="build_1_grid_tech">Tech</string>
 
+    <string name="heroes_screen_name">Superheroes</string>
+    <string name="heroes_screen_hero_name_1">Smart</string>
+    <string name="heroes_screen_hero_description_1">The smartest guy, but has to sleep 22 hours a day</string>
+    <string name="heroes_screen_hero_name_2">Strong</string>
+    <string name="heroes_screen_hero_description_2">The strongest girl, but has ultra sensibility</string>
+    <string name="heroes_screen_hero_name_3">Beautiful</string>
+    <string name="heroes_screen_hero_description_3">The most beautiful guy, but also has daylight as weakness</string>
+    <string name="heroes_screen_hero_name_4">Fast</string>
+    <string name="heroes_screen_hero_description_4">The fastest girl, but also is blind</string>
+    <string name="heroes_screen_hero_name_5">Teeth</string>
+    <string name="heroes_screen_hero_description_5">The girl with perfect teeth, but also has acid saliva</string>
+    <string name="heroes_screen_hero_name_6">Diamond bone</string>
+    <string name="heroes_screen_hero_description_6">The girl with diamond bone, but the tendons do not fix in the bones</string>
+
 </resources>

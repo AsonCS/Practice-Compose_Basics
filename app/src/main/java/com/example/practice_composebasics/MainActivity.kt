@@ -88,6 +88,8 @@ class MainActivity : ComponentActivity() {
                                 )
                             MainViewModel.CurrentScreen.Screen9Build1Grid ->
                                 Build1GridApp()
+                            MainViewModel.CurrentScreen.Screen10Heroes ->
+                                HeroesApp()
                         }
                         MainButton(
                             toggleScreen = viewModel::toggleScreen,
